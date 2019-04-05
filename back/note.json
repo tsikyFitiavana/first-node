@@ -1,23 +1,23 @@
 [
     {
         "nom": "princy",
-        "prenom": "rakoto"
+        "prenom": "rakoto",
+        "image" : "/assets/1.png"
     },
     {
         "nom": "miranto",
-        "prenom": "rakoto"
+        "prenom": "rakoto",
+        "image":"/assets/test.jpg"
+        
     },
     {
         "nom": "patrick",
-        "prenom": "rakoto"
+        "prenom": "rakoto",
+        "image":"/assets/4.jpg"
     },
     {
         "nom": "aina",
-        "prenom": "rakoto"
-    }
-    ,
-    {
-        "nom": "bruno",
-        "prenom": "rakoto"
+        "prenom": "rakoto",
+        "image":"/assets/3.jpg"
     }
 ]

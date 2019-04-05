@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import { Route} from 'react-router-dom';
+import './App.css';
 class List extends Component {
     constructor(props) {
       super(props);
@@ -43,10 +43,13 @@ class List extends Component {
                  let aff = document.getElementById('affichage')
                 console.log(this.state.items)
                 for(let i = 0; i<this.state.items.length; i++){   
-                  aff.innerHTML += this.state.items[i].nom +' ' + this.state.items[i].prenom +'<br>'
+                  aff.innerHTML +='<img id="reduirImage" src="'+this.state.items[i].image+'"/><label id="floater">Nom : ' + this.state.items[i].nom +'<br/> Prenom : ' + this.state.items[i].prenom +'</label><br/>'
+                  
+                  console.log(this.state.items[0].image)
                  } 
               }}>Lister</button>
-             <p id="affichage"></p> 
+              
+             <div id="affichage"></div> 
           </div>
         );
       }
