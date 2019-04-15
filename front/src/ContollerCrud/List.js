@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import Ajouter from './Ajouter'
 class List extends Component {
  
     constructor(props) {
@@ -53,6 +54,7 @@ class List extends Component {
               }}>Lister</button>
               
              <div id="affichage" style={{display:'none'}}> 
+             <Ajouter/>
              <table>
                <tbody>
                  { (items.length > 0)? items.map(item =>(
@@ -86,7 +88,10 @@ class List extends Component {
                          <div className='custom-ui'>
                            <form method="POST" action="http://localhost:9400/list?_method=DELETE" enctype="application/x-www-form-urlencoded">
                              <input type="hidden" name="_method" value="DELETE"/>
+                             
                              <input type="hidden" name="id" value={item.id}/>
+                             <span>confirmer supression<br/>{item.nom + ' '+item.prenom}</span>
+                             <br/><br/>
                            <button onClick={onClose}>Cancel</button>
                            <button>
                              Delete
