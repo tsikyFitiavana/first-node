@@ -2,11 +2,12 @@
   "name": "my-shop",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:9200",
+  "proxy": "http://localhost:9400",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.8.4",
+    "react-confirm-alert": "^2.4.1",
     "react-dom": "^16.8.4",
     "react-image": "^2.1.1",
     "react-router-dom": "^5.0.0",
