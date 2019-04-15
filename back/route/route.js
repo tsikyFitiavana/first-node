@@ -1,22 +1,12 @@
-const express = require ('express')
-const path = require('path');
-
-var cors = require('cors')
+ const express = require('express')
 const router = express.Router()
-const fs   = require('fs');
-router.get('/', function (req, res) {
-res.send('hello world')
-})
+const routeDuControler = require('../controler/crud.controler');
 
-router.get('/list', function (req, res) {
-     let read = fs.readFileSync('./note.json', 'utf8')
-     res.write(read)
-     res.end()
-})
-router.get('/test', function (req, res) {
-    let read = fs.readFileSync('./test.json', 'utf8')
-     res.write(read)
-     res.end()
-})
+router.route('/list')
+     .get(routeDuControler.getContent)
+     .post(routeDuControler.postNewContent)
+     .put(routeDuControler.miseAJourContent)
+     .delete(routeDuControler.deleteContent);
+router.route('/test').get(routeDuControler.listRoute);
 
 module.exports = router;
