@@ -1,1 +1,17 @@
-[{"id":0,"nom":"zaka","prenom":"nano"},{"id":1,"nom":"zane","prenom":"papa"},{"id":2,"nom":"bruno","prenom":"lesy ah"}]
+[
+    {
+        "id": 0,
+        "nom": "lama",
+        "prenom": "fache"
+    },
+    {
+        "id": 1,
+        "nom": "zane",
+        "prenom": "papa"
+    },
+    {
+        "id": 2,
+        "nom": "bruno",
+        "prenom": "lesy ah"
+    }
+]

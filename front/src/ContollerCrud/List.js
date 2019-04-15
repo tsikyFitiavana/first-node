@@ -69,7 +69,6 @@ class List extends Component {
                               <input type="text" name="nom" placeholder={item.nom}/><br/><br/>
                               <input type="text" name="prenom" placeholder={item.prenom}/><br/><br/>
                               <input type="hidden" name="id" value={item.id}/>
-                            
                             <button onClick={onClose}>Cancel</button>
                             <button>
                               Edit
@@ -79,7 +78,25 @@ class List extends Component {
                         );
                       }
                     });
-                   }}>Update</button></td>
+                   }}>Update</button>
+                   <button onClick = {()=>{
+                    confirmAlert({
+                     customUI: ({ onClose }) => {
+                       return (
+                         <div className='custom-ui'>
+                           <form method="POST" action="http://localhost:9400/list?_method=DELETE" enctype="application/x-www-form-urlencoded">
+                             <input type="hidden" name="_method" value="DELETE"/>
+                             <input type="hidden" name="id" value={item.id}/>
+                           <button onClick={onClose}>Cancel</button>
+                           <button>
+                             Delete
+                           </button>
+                           </form>
+                         </div>
+                       );
+                     }
+                   });
+                  }}>Delete</button></td>
                    </tr>
                  )):(<tr></tr>)}
                </tbody>
