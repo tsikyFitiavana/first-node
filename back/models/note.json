@@ -1,17 +1,1 @@
-[
-    {
-        "id": 0,
-        "nom": "lama",
-        "prenom": "fache"
-    },
-    {
-        "id": 1,
-        "nom": "zane",
-        "prenom": "papa"
-    },
-    {
-        "id": 2,
-        "nom": "bruno",
-        "prenom": "lesy ah"
-    }
-]
+[{"id":1,"nom":"batoto","prenom":"meme"},{"id":2,"nom":"batoto","prenom":"solder"},{"id":3,"nom":"toky","prenom":"test"}]
