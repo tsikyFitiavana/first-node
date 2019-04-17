@@ -29,8 +29,9 @@ exports.postNewContent = (req, res) => {
      
      console.log(id)
      objParse.push({ "id": id, "nom": nom, "prenom": prenom})
-     res.send(objParse)
+     //res.send(objParse)
      fs.writeFileSync('./models/note.json', JSON.stringify(objParse))
+     res.redirect('http://localhost:3000/list')
 };
 exports.miseAJourContent = (req, res) => {
     let id = parseInt(req.body.id);
@@ -54,9 +55,10 @@ exports.miseAJourContent = (req, res) => {
      
           }
      
-     res.send(jsonAModifier)
-     res.end()
+     // res.send(jsonAModifier)
+     // res.end()
      fs.writeFileSync('./models/note.json', JSON.stringify(jsonAModifier))
+     res.redirect('http://localhost:3000/list')
 };
 exports.deleteContent = (req, res) => {
     let id = parseInt(req.body.id)
@@ -67,8 +69,9 @@ exports.deleteContent = (req, res) => {
                resultatDeleter.splice(i,1)
           } 
      }
-     res.send(JSON.stringify(resultatDeleter))
+     //res.send(JSON.stringify(resultatDeleter))
      fs.writeFileSync('./models/note.json', JSON.stringify(resultatDeleter))
+     res.redirect('http://localhost:3000/list')
 };
 exports.listRoute = (req, res) => {
 
