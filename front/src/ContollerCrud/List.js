@@ -41,19 +41,9 @@ class List extends Component {
       }else {
         return (
           <div>
-              <button type="button" onClick={()=>{
-                let aff = document.getElementById('affichage')
-                aff.style.display = 'block'
-                /*  console.log(this.state.items)
-                for(let i = 0; i<this.state.items.length; i++){   
-                  aff.innerHTML +='<p id="floater">Nom : ' + this.state.items[i].nom +'<br/> Prenom : ' + this.state.items[i].prenom +'</p><button id = "update"></button><br/>'
-                  console.log(this.state.items[0].image)
-                 } 
-              */
-
-              }}>Lister</button>
               
-             <div id="affichage" style={{display:'none'}}> 
+              
+             <div id="affichage"> 
              <Ajouter/>
              <table>
                <tbody>
@@ -66,7 +56,7 @@ class List extends Component {
                       customUI: ({ onClose }) => {
                         return (
                           <div className='custom-ui'>
-                            <form method="POST" action="http://localhost:9400/list?_method=PUT" enctype="application/x-www-form-urlencoded">
+                            <form method="POST" action="http://localhost:9400/list?_method=PUT" encType="application/x-www-form-urlencoded">
                               <input type="hidden" name="_method" value="PUT"/>
                               <input type="text" name="nom" placeholder={item.nom}/><br/><br/>
                               <input type="text" name="prenom" placeholder={item.prenom}/><br/><br/>

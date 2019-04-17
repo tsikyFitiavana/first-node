@@ -40,7 +40,9 @@ exports.miseAJourContent = (req, res) => {
      let updater = fs.readFileSync('./models/note.json', 'utf-8')
      let jsonAModifier = JSON.parse(updater)
           for (let i = 0; i < jsonAModifier.length; i++) {
-               if (id === i) {
+               // console.log(jsonAModifier[i].id);
+               
+               if (id == jsonAModifier[i].id) {
                     if(nom) {
                          jsonAModifier[i].nom = nom
                          console.log('new name'+jsonAModifier[i].nom)
