@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import { css } from '@emotion/core';
+import { ClipLoader } from 'react-spinners';
 import Ajouter from './Ajouter'
 import './cssGlobal.css'
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
+
 class List extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      loading: true,
       items: []
     };
   }
@@ -20,14 +28,14 @@ class List extends Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
+            loading: false,
             items: result
           });
           console.log(result)
         },
         (error) => {
           this.setState({
-            isLoaded: true,
+            loading: true,
             error
           });
         }
@@ -36,13 +44,23 @@ class List extends Component {
 
 
   render() {
-    const { error, items } = this.state;
-    if (error) {
-      return <div>{console.log(error.message)}</div>;
+    const { items, loading } = this.state;
+    if (loading) {
+      return <div>
+        <div className='sweet-loading' id="loadded">
+          <ClipLoader
+            css={override}
+            sizeUnit={"px"}
+            size={150}
+            color={'#123abc'}
+            loading={this.state.loading}
+          />
+        </div>
+      </div>;
     } else {
       return (
         <div>
-          <div className="container">
+          <div className="container contoneurParents">
 
 
             <div className="table-responsive">
@@ -59,61 +77,75 @@ class List extends Component {
                 <tbody>
                   {(items.length > 0) ? items.map(item => (
                     <tr key={item.id}>
-                      <td><center>{item.id}</center></td>
-                      <td><center>{item.nom}</center></td>
-                      <td><center>{item.prenom}</center></td>
+                      <td><center><p>{item.id}</p></center></td>
+                      <td><center><p id="nameToLower">{item.nom}</p></center></td>
+                      <td><center><p>{item.prenom}</p></center></td>
                       <td>
-                        <center>
-                          <button onClick={(e) => {
-                            e.preventDefault()
-                            confirmAlert({
-                              customUI: ({ onClose }) => {
-                                return (
-                                  <div className='custom-ui' id="pop-Up">
-                                  
-                                    <form method="POST" action="http://localhost:9400/list?_method=DELETE" enctype="application/x-www-form-urlencoded">
-                                      <input type="hidden" name="_method" value="DELETE" />
+                        <div className="container-fluid">
+                          <div className="row">
+                            <div className="col-md-6 delete">
+                              <button onClick={(e) => {
+                                e.preventDefault()
+                                confirmAlert({
+                                  customUI: ({ onClose }) => {
+                                    return (
+                                      <div className='custom-ui' id="pop-Up">
 
-                                      <input type="hidden" name="id" value={item.id} />
-                                      <span>confirmer supression<br />{item.nom + ' ' + item.prenom}</span>
-                                      <br /><br />
-                                      <button className="btn btn-danger">
-                                        OUI
+                                        <form method="POST" action="http://localhost:9400/list?_method=DELETE" enctype="application/x-www-form-urlencoded">
+                                          <input type="hidden" name="_method" value="DELETE" />
+
+                                          <input type="hidden" name="id" value={item.id} />
+                                          <span>confirmer supression<br />{item.nom + ' ' + item.prenom}</span>
+                                          <br /><br />
+                                          <button className="btn btn-danger btn-sm">
+                                            OUI
                                       </button>
-                                      <button onClick={onClose} className="btn btn-secondary">NON</button>
-                                      
-                                    </form>
-                                  </div>
-                                );
-                              }
-                            });
-                          }} className="btn btn-danger">x</button>
-                          &nbsp;
-                          &nbsp;
-                          &nbsp;
-                          &nbsp;
-                          <button onClick={() => {
-                            confirmAlert({
-                              customUI: ({ onClose }) => {
-                                return (
-                                  <div className='custom-ui' id="pop-Up1">
-                                    <form method="POST" action="http://localhost:9400/list?_method=PUT" encType="application/x-www-form-urlencoded">
-                                      <input type="hidden" name="_method" value="PUT" />
-                                      <label>Nom</label><input type="text" name="nom" placeholder={item.nom}/><br /><br />
-                                      <label>Prenom</label><input type="text" name="prenom" placeholder={item.prenom}/><br /><br />
-                                      <input type="hidden" name="id" value={item.id} />
-                                      <button className="btn btn-success">
-                                        OK
-                                      </button>
-                                      <button onClick={onClose} className="btn btn-secondary">Annuler</button>
-                                      
-                                    </form>
-                                  </div>
-                                );
-                              }
-                            });
-                          }} className="btn btn-success">Edit</button>
-                        </center>
+                                          <button onClick={onClose} className="btn btn-secondary btn-sm BtnPopUpMargin" >NON</button>
+
+                                        </form>
+                                      </div>
+                                    );
+                                  }
+                                });
+                              }} className="btn btn-danger btn-sm">x</button>
+                            </div>
+                            <div className="col-md-6">
+                              <button onClick={() => {
+                                confirmAlert({
+                                  customUI: ({ onClose }) => {
+                                    return (
+                                      <div className='custom-ui' id="pop-Up1">
+                                        <form method="POST" action="http://localhost:9400/list?_method=PUT" encType="application/x-www-form-urlencoded" className="form-group">
+                                          <input type="hidden" name="_method" value="PUT" />
+                                          <table>
+                                            <thead></thead>
+                                            <tbody>
+                                              <tr>
+                                                <td><label>Nom</label></td>
+                                                <td><input type="text" name="nom" placeholder={item.nom} className="form-control" /></td>
+                                              </tr>
+                                              <tr>
+                                                <td><label>Prenom</label></td>
+                                                <td><input type="text" name="prenom" placeholder={item.prenom} className="form-control" /></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                          <br /><br />
+                                          <input type="hidden" name="id" value={item.id} />
+                                          <button className="btn btn-success btn-sm">
+                                            OK
+                                        </button>
+                                          <button onClick={onClose} className="btn btn-secondary btn-sm BtnPopUpMargin">Annuler</button>
+                                        </form>
+                                      </div>
+                                    );
+                                  }
+                                });
+                              }} className="btn btn-success btn-sm">Edit</button>
+                            </div>
+
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   )) : (<tr></tr>)}
