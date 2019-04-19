@@ -18,3 +18,34 @@
   box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
   color: #666;
 }
+.contoneurParents{
+  padding: 0px;
+}
+#dernierDiv{
+  text-align: right;
+}
+#Ajouter{
+  margin-top: 2%;
+  margin-bottom:5%; 
+}
+#nameToLower{
+	text-transform: lowercase;
+}
+ 
+#nameToLower:first-letter {
+	text-transform: capitalize;
+}
+.delete{
+  text-align: right;
+}
+.BtnPopUpMargin{
+  margin-left: 65%;
+}
+.withoutMargeAndPading{
+  margin-left: 0px;
+  padding-left: 0px;
+}
+#loadded{
+  margin-top:10%;
+  margin-left:50%;
+}
